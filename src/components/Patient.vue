@@ -1,5 +1,4 @@
 <script setup>
-
 defineProps({
     first_name: String,
     last_name: String,

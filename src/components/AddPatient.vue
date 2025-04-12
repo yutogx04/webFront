@@ -33,7 +33,7 @@ export default{
 </script>
 <template>
     <div id="add_patient">
-        <form @submit.prevent="submit">
+        <form @submit="submit">
             <h1>Add Patient</h1>
             <div id="form">
                 <div id="labels">
@@ -47,7 +47,7 @@ export default{
                 <div id="inputs">
                     <input id="first_name" required v-model="first_name"/> <br>
                     <input id="last_name" required v-model="last_name"/> <br>
-                    <input id="date_of_birth" required v-model="date_of_birth"/> <br>
+                    <input id="date_of_birth" required v-model="date_of_birth" type="date"/> <br>
                     <select id="gender" required v-model="gender">
                         <option>male</option>
                         <option>female</option>
