@@ -21,75 +21,50 @@ axios.get('http://localhost:3000/')
   <header>
     <h1>Patient Manager</h1>
   </header>
-  <main>
-    <AddPatient/>
-    <div id="patients">
-      <div id="title">
-        <h2>View All patient</h2>
-      </div>
-      <ul>
-        <li v-for="patient in patients">
-          <Patient v-bind="patient"/>
-        </li>
-      </ul>
+  <div class="flex-container">
+    <div class="panel form-panel">
+      <AddPatient />
     </div>
-  </main>
+    <div class="panel list-panel">
+      <div id="patients">
+        <div id="title">
+          <h2>View All patient</h2>
+        </div>
+        <ul>
+          <li v-for="patient in patients">
+            <Patient v-bind="patient"/>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
 </template>
-
 <style scoped>
-header {
-  background-color: var(--bg--color);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding-left: 20px;
-  position: fixed;
-  width:100%;
-}
-main {
-  height: 80%;
+.flex-container {
   display: flex;
-  justify-content: center;
-  top: 40px;
-  #title{
-    background-color: var(--bg--color);
-    position: fixed;
-    top:50px;
-    left:calc(10% + 357px);
-    font-size: 2rem;
-    font-weight: bold;
-    width:405px;
-  }
-  ul{
-    padding-top:120px;
-    list-style: none;
-  }
-  li{
-    margin: 10px;
-  }
-  #add_patient{
-    top: 50px;
-    left: 10%;
-    position:fixed;
-  }
-  #patients{
-    float: right;
-  }
+  height: calc(100vh - 48px);
+  width: 100%;
+  overflow: hidden;
 }
-/* @media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
 
-  .logo {
-    margin: 0 2rem 0 0;
-  }
+.panel {
+  flex: 1;
+  transition: flex 0.4s ease;
+  overflow-y: auto;
+  border: 1px solid #ccc;
+}
 
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-} */
+.panel:hover {
+  flex: 2;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+#patients {
+  width:370px;
+  margin: auto;
+}
 </style>

@@ -32,7 +32,7 @@ export default{
 }
 </script>
 <template>
-    <div id="add_patient">
+    <div id="addContainer">
         <form @submit="submit">
             <h1>Add Patient</h1>
             <div id="form">
@@ -90,5 +90,10 @@ export default{
 
         height: 30px;
         width: 70px;
+    }
+    #addContainer{
+        margin-top: 20%;
+        width: 370px;
+        margin: auto;
     }
 </style>
