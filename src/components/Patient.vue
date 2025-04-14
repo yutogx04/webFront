@@ -1,5 +1,7 @@
 <script setup>
-defineProps({
+import axios from 'axios';
+const props= defineProps({
+    _id: Number,
     first_name: String,
     last_name: String,
     date_of_birth: String,
@@ -7,6 +9,17 @@ defineProps({
     contact: String,
     condition: String,
 })
+const deletePatient = function() {
+    console.log("deleting patient");
+    axios.delete('http://localhost:3000/' + props._id)
+        .then(function (response) {
+            console.log(response);
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+    window.location.reload();
+}
 </script>
 <template>
     <div id="card">
@@ -21,6 +34,7 @@ defineProps({
                 condition: {{ condition }}
            </div>
         </div>
+        <button @click="deletePatient">X</button>
     </div>
 </template>
 <style scoped>
