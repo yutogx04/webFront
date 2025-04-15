@@ -1,6 +1,10 @@
 <script setup>
 
-    const props = defineProps(['sortBy'])
+    const props = defineProps({
+        sortBy:{
+            var: "",
+            ascending: true,
+        }})
     const emits=defineEmits(['sort'])
 </script>
 

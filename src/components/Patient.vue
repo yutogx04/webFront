@@ -1,5 +1,5 @@
 <script setup>
-import axios from 'axios';
+import DeleteButton from './DeleteButton.vue';
 const props= defineProps({
     _id: Number,
     first_name: String,
@@ -9,17 +9,7 @@ const props= defineProps({
     contact: String,
     condition: String,
 })
-const deletePatient = function() {
-    console.log("deleting patient");
-    axios.delete('http://localhost:3000/' + props._id)
-        .then(function (response) {
-            console.log(response);
-        })
-        .catch(function (error) {
-            console.log(error);
-        });
-    window.location.reload();
-}
+
 </script>
 <template>
     <div id="card">
@@ -34,7 +24,7 @@ const deletePatient = function() {
                 condition: {{ condition }}
            </div>
         </div>
-        <button @click="deletePatient">X</button>
+        <DeleteButton :_id="_id">X</DeleteButton>
     </div>
 </template>
 <style scoped>

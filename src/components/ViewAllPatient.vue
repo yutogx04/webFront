@@ -62,36 +62,36 @@ const compare = (a,b,c)=>{
 };
 
 
-const sorter =function(patientA,patientB,sortBy){
-  switch (sortBy.var){
+const sorter =function(patientA,patientB){
+  switch (sortBy.value.var){
     case "name":
-      return compare(sortBy.ascending,
+      return compare(sortBy.value.ascending,
         ( patientA.first_name + patientA.last_name ).toLowerCase(),
         ( patientB.first_name + patientB.last_name ).toLowerCase());
     case "date":
-      return compare (sortBy.ascending,
+      return compare (sortBy.value.ascending,
         new Date(patientA.date_of_birth) ,
         new Date(patientB.date_of_birth) );
     case "gender":
-      return compare (sortBy.ascending,
+      return compare (sortBy.value.ascending,
         patientA.gender ,
         patientB.gender );
     case "contact":
-      return compare (sortBy.ascending,
+      return compare (sortBy.value.ascending,
         patientA.contact.toLowerCase() ,
         patientB.contact.toLowerCase() );
     case "condition":
-      return compare (sortBy.ascending,
+      return compare (sortBy.value.ascending,
         patientA.condition.toLowerCase() ,
         patientB.condition.toLowerCase());
     default :
-      return compare (sortBy.ascending,
+      return compare (sortBy.value.ascending,
         patientA._id,
         patientB._id);
   }
 }
 
-const sort = ()=>{filteredPatients.value.sort((a,b)=>{return sorter(a,b,sortBy)})}
+const sort = ()=>{filteredPatients.value.sort((a,b)=>{return sorter(a,b)})}
 
 
 </script>
