@@ -51,12 +51,11 @@ console.log("filtering patients");
 }
 
 const compare = (a,b,c)=>{
-  console.log("a=",a,"b=",b,"c=",c);
   if (b < c) {
-    return a ? -1 : 1;
+    return a === 'true' ? -1 : 1;
   }
   if (b > c) {
-    return a ? 1 : -1;
+    return a === 'true' ? 1 : -1;
   }
   return 0;
 };
@@ -91,7 +90,11 @@ const sorter =function(patientA,patientB){
   }
 }
 
-const sort = ()=>{filteredPatients.value.sort((a,b)=>{return sorter(a,b)})}
+const sort = ()=>{
+  filteredPatients.value.sort((a,b)=>{
+     return sorter(a,b)
+  })
+}
 
 
 </script>

@@ -14,6 +14,7 @@ const deletePatient=function() {
             console.log(error);
         });
    }
+   window.location.reload();
 }
 </script>
 
