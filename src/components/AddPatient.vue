@@ -32,133 +32,159 @@ export default{
 }
 </script>
 <template>
-    <div id="addContainer">
-        <form @submit="submit">
-            <h1>Add Patient</h1>
-            <div id="form">
-                <div id="labels">
-                    <label for="first_name">first_name:</label> <br>
-                    <label for="last_name">last_name:</label> <br>
-                    <label for="date_of_birth">date_of_birth:</label> <br>
-                    <label for="gender">gender:</label> <br>
-                    <label for="contact">contact:</label> <br>
-                    <label for="condition">condition:</label> <br>
-                </div>
-                <div id="inputs">
-                    <input id="first_name" required v-model="first_name"/> <br>
-                    <input id="last_name" required v-model="last_name"/> <br>
-                    <input id="date_of_birth" required v-model="date_of_birth" type="date"/> <br>
-                    <select id="gender" required v-model="gender">
-                        <option>male</option>
-                        <option>female</option>
-                    </select> <br>
-                    <input id="contact" required v-model="contact"/> <br>
-                    <input id="condition" required v-model="condition"/> <br>
-                </div>
-            </div>
-            <input id="submit" type="submit" label="Add Patient"/>
-        </form>
-    </div>
+  <div id="AddPatient">
+    <h2>Add New Patient</h2>
+    <form @submit="submit">
+      <div>
+        <label for="firstName">First Name</label>
+        <input
+          id="firstName"
+          v-model="first_name"
+          type="text"
+          placeholder="First Name"
+          required
+        />
+      </div>
+
+      <div>
+        <label for="lastName">Last Name</label>
+        <input
+          id="lastName"
+          v-model="last_name"
+          type="text"
+          placeholder="Last Name"
+          required
+        />
+      </div>
+
+      <div>
+        <label for="dob">Date of Birth</label>
+        <input
+          id="dob"
+          v-model="date_of_birth"
+          type="date"
+          required
+        />
+      </div>
+      <div>
+        <label for="gender">Gender</label>
+        <select id="gender" required v-model="gender">
+          <option>male</option>
+          <option>female</option>
+        </select>
+      </div>
+      <div>
+        <label for="contact">Contact</label>
+        <input
+          id="contact"
+          v-model="contact"
+          placeholder="example@domain.com"
+          required
+        />
+      </div>
+
+      <div>
+        <label for="condition">Condition</label>
+        <input
+          id="condition"
+          v-model="condition"
+          type="text"
+          placeholder="..."
+          required
+        />
+      </div>
+
+      <input type="submit" label="Submit"/>
+    </form>
+  </div>
 </template>
+
+
 <style scoped>
-
-#form{
-    display: flex;
-    flex-direction: row;
-}
-form{
-    color: var(--text--black);
-    padding: 0.5rem 0.5rem 0.5rem 1.5rem ;
-    background-color: var(--bg--off-white);
-    font-weight: 400;
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 2rem;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
-    transition: all 0.3s ease-in-out;
-    width: 430px;
-    margin: 2rem auto;
+/* Form Styles */
+h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  color: var(--text-primary);
+  text-align: center;
 }
 
-form:hover {
-    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
-    transform: translateY(-2px);
+#AddPatient {
+  max-width: 600px;
+  width: 90%;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: var(--surface);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  position: relative;
+  z-index: 1;
 }
 
-form div {
-    margin: 1rem 0;
-    width:250px;
+#AddPatient > div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
 }
 
-
-form label {
-    font-weight: 500;
-    width:100px;
-    display: block;
-    padding-bottom: 7px;
-    padding-top: 7px;
-    height: 16px;
+label {
+  flex: 1 0 150px;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: var(--text-secondary);
 }
 
-form input,
-form select,
-form textarea {
-    width:241;
-    margin-bottom: 5px;
-    padding: 7px 1rem;
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    font-size: 1rem;
-    background-color: #fff;
-    transition: border 0.2s ease, box-shadow 0.2s ease;
-    height: 30px;
-    width: 241px;
+input , select {
+  flex: 2 1 300px;
+  min-width: 0;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  font-size: 1rem;
+  width: 100%;
+  background-color: var(--surface);
+  color: var(--text-primary);
 }
 
-form input:focus,
-form select:focus,
-form textarea:focus {
-    border-color: var(--primary);
-    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2);
-    outline: none;
+input[type="submit"] {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: var(--primary);
+  color: #fff;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-
-#submit{
-    margin: 0 147px;
-    width: 70px;
-    background-color: var(--bg--off-white);
-    color: #fff;
-    padding: 0;;
-    border: none;
-    border-radius: 6px;
-    font-size: 1rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+input[type="submit"]:hover {
+  background-color: var(--primary-dark);
 }
 
-i#submit:hover {
-    background-color: var(--primary-dark);
-    transform: scale(1.03);
-}
-    h1{
-        margin-left: -0.5rem;
-        font-size: 2rem;
-        font-weight: bold;
-    }
-    /* input[type="submit"]{
-        background-color: var(--accent--blue);
-        color: var(--text--white);
-        border: 1px solid var(--border);
-        border-radius: 5px;
+/* Responsive */
+@media (max-width: 600px) {
+  #AddPatient {
+    padding: 1rem;
+  }
 
-        height: 30px;
-        width: 70px;
-    } */
-    #addContainer{
-        margin-top: 20%;
-        width: 370px;
-        margin: auto;
-    }
+  #AddPatient > div {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  label {
+    flex: 1 0 auto;
+    margin-bottom: 0.25rem;
+  }
+
+  input {
+    flex: 1 0 auto;
+    font-size: 0.95rem;
+  }
+}
 </style>

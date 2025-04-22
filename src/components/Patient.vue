@@ -24,28 +24,46 @@ const props= defineProps({
                 condition: {{ condition }}
            </div>
         </div>
-        <DeleteButton :_id="_id">X</DeleteButton>
+        <!-- <DeleteButton :_id="_id">X</DeleteButton> -->
     </div>
 </template>
 <style scoped>
-#info {
-    display: flex;
-    div {
-        margin: 5px;
-    }
-}
 #card {
-    font-weight:400;
-    background-color: var(--bg--off-white);
-    color: var(--text--black);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 0.5rem 0.5rem 0.5rem 1.5rem ;
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: var(--surface);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  position: relative;
+  z-index: 1;
 }
-h1 {
-    margin-left: -0.5rem;
-    font-size: 2rem;
-    font-weight: bold;
-    overflow: auto;
+
+
+#card > div{
+  display: flex;
+}
+
+
+#card > div > div{
+  margin: 5px;
+}
+
+label {
+  flex: 1 0 150px;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+@media (max-width: 600px) {
+  label {
+    flex: 1 0 auto;
+    margin-bottom: 0.25rem;
+  }
+  #card {
+    padding: 1rem;
+  }
 }
 </style>

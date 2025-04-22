@@ -100,7 +100,7 @@ const sort = ()=>{
 </script>
 <template>
     <h2>View All patients</h2>
-      <Search @filter="filter"/>
+      <!-- <Search @filter="filter"/> -->
       <Sort @sort="sort" :sortBy="sortBy" />
     <div id="patients">
         <ul>
