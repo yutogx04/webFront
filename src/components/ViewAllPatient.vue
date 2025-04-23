@@ -1,5 +1,4 @@
 <script setup>
-import Search from './Search.vue'
 import Patient from './Patient.vue'
 import axios from 'axios';
 import Sort from './Sort.vue'
@@ -22,33 +21,6 @@ axios.get('http://localhost:3000/')
   .catch(error => {
     console.error('Error fetching patients:', error);
   });
-
-
-const filter = function(filter) {
-console.log("filtering patients");
-  filteredPatients.value=patients.value.filter((patient) => {
-  if (filter.name)
-    if (!(patient.first_name + patient.last_name).toLowerCase().includes(filter.name.toLowerCase()))
-      return false;
-  if (filter.min_date)
-    if (new Date(patient.date_of_birth)< new Date(filter.min_date))
-      return false;
-  if (filter.max_date)
-    if (new Date(patient.date_of_birth) > new Date(filter.max_date))
-      return false;
-  if (filter.gender)
-    if (filter.gender!=patient.gender)
-      return false;
-  if (filter.contact)
-    if (filter.contact!=patient.contact)
-      return false;
-  if (filter.condition)
-    if (!filter.condition.toLowerCase().includes(patient.condition.toLowerCase()))
-      return false;
-  return true;
-  })
-  sort()
-}
 
 const compare = (a,b,c)=>{
   if (b < c) {
@@ -100,7 +72,6 @@ const sort = ()=>{
 </script>
 <template>
     <h2>View All patients</h2>
-      <!-- <Search @filter="filter"/> -->
       <Sort @sort="sort" :sortBy="sortBy" />
     <div id="patients">
         <ul>

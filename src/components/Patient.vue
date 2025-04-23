@@ -1,5 +1,4 @@
 <script setup>
-import DeleteButton from './DeleteButton.vue';
 const props= defineProps({
     _id: Number,
     first_name: String,
@@ -24,7 +23,6 @@ const props= defineProps({
                 condition: {{ condition }}
            </div>
         </div>
-        <!-- <DeleteButton :_id="_id">X</DeleteButton> -->
     </div>
 </template>
 <style scoped>
