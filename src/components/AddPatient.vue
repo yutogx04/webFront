@@ -13,6 +13,27 @@ export default{
     },
     methods:{
         submit(){
+            if(!this.first_name.match(/^[_a-zA-Z0-9]/)){
+                alert("First name cannot contain special characters")
+                return
+            }
+            if(!this.last_name.match(/^[_a-zA-Z0-9]/)){
+                alert("Last name cannot contain special characters")
+                return
+            }
+
+            if(new Date(this.date_of_birth)>Date.now()){
+                alert("date is not valid")
+                return;
+            }
+            if(!this.contact.match(/^[_a-zA-Z0-9.,@]/)){
+                alert("Contact cannot contain special characters")
+                return
+            }
+            if(!this.condition.match(/^[_a-zA-Z0-9,.]/)){
+                alert("Condition cannot contain special characters")
+                return
+            }
             axios.post('http://localhost:3000/', {
                     first_name: this.first_name,
                     last_name: this.last_name,
@@ -23,10 +44,12 @@ export default{
             })
             .then(function (response) {
                 console.log(response);
+                window.location.reload();
             })
             .catch(function (error) {
+                alert("Error adding patient try again later");
                 console.log(error);
-            });
+            })
         }
     }
 }
@@ -34,7 +57,7 @@ export default{
 <template>
   <div id="AddPatient">
     <h2>Add New Patient</h2>
-    <form @submit="submit">
+    <form @submit.prevent="submit">
       <div>
         <label for="firstName">First Name</label>
         <input
